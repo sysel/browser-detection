@@ -1,0 +1,21 @@
+{
+    "name": "sysel/browser-detector",
+    "type": "library",
+    "description": "Detect a browser from User Agent string",
+    "keywords": ["browser detection"],
+    "homepage": "https://github.com/sysel/browser-detector",
+    "license": ["MIT"],
+    "authors": [{
+        "name": "Vojtech Sysel"
+    }],
+    "support": {
+        "issues": "https://github.com/sysel/browser-detector/issues"
+    },
+    "require": {
+        "php": ">=5.6"
+    },
+    "minimum-stability": "beta",
+    "require-dev": {
+        "nette/tester": "~2.0"
+    }
+}

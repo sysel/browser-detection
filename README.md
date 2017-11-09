@@ -1,2 +1,3 @@
-# browser-detection
-Detect a browser from user agent string
+# Browser Detector
+
+Detect a browser from user agent string.
