@@ -1,10 +1,12 @@
 <?php
 
+require_once(__DIR__ . '/BrowserDetector/Browser.php');
+
 use BrowserDetector\Browser;
 
 class BrowserDetector
 {
-    public fuction __construct() {
+    public function __construct() {
     }
 
     public function detect($userAgent) {
