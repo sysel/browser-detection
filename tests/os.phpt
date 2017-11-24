@@ -20,6 +20,12 @@ class OsTest extends Tester\TestCase
         $browser = $this->browserDetector->detect($userAgent);
         Assert::same(BrowserDetector::OS_WINDOWS, $browser->os);
     }
+
+    public function testOSAndriod() {
+        $userAgent = 'Mozilla/5.0 (Linux; Android 4.4.2; K017 Build/KVT49L) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/30.0.0.0 Safari/537.36';
+        $browser = $this->browserDetector->detect($userAgent);
+        Assert::same(BrowserDetector::OS_ANDROID, $browser->os);
+    }
 }
 
 # Run test case

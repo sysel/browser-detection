@@ -8,6 +8,7 @@ class BrowserDetector
 {
     const OS_UNKNOWN = 'unknown',
           OS_WINDOWS = 'Windows',
+          OS_ANDROID = 'Android',
           OS_LINUX = 'Linux';
     const BROWSER_UNKNOWN = 'unknown';
 
@@ -25,6 +26,8 @@ class BrowserDetector
     private function detectOS($userAgent, $browser) {
         if (stristr($userAgent, 'windows')) {
             $browser->os = self::OS_WINDOWS;
+        } elseif (stristr($userAgent, 'android')) {
+            $browser->os = self::OS_ANDROID;
         } elseif (stristr($userAgent, 'linux')) {
             $browser->os = self::OS_LINUX;
         } else {
