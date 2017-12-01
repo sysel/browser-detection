@@ -13,7 +13,7 @@ class Definitions
     /**
      * @param  string Cache directory
      */
-    public function __construct($cacheDir) {
+    public function __construct($cacheDir = NULL) {
         if ($cacheDir && is_dir($cacheDir)) {
             $this->cacheDir = $cacheDir;
         }

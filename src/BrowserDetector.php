@@ -3,17 +3,19 @@
 require_once(__DIR__ . '/BrowserDetector/Browser.php');
 require_once(__DIR__ . '/BrowserDetector/Definitions.php');
 
+use BrowserDetector;
 use BrowserDetector\Browser;
 
 class BrowserDetector
 {
-    const OS_UNKNOWN = 'unknown',
-          OS_WINDOWS = 'Windows',
-          OS_ANDROID = 'Android',
-          OS_LINUX = 'Linux';
+    const OS_UNKNOWN = 'unknown';
     const BROWSER_UNKNOWN = 'unknown';
+    const PLATFORM_UNKNOWN = 'unknown';
+
+    private $definitions;
 
     public function __construct() {
+        $this->definitions = new BrowserDetector\Definitions;
     }
 
     public function detect($userAgent) {
@@ -25,15 +27,16 @@ class BrowserDetector
     }
 
     private function detectOS($userAgent, $browser) {
-        if (stristr($userAgent, 'windows')) {
-            $browser->os = self::OS_WINDOWS;
-        } elseif (stristr($userAgent, 'android')) {
-            $browser->os = self::OS_ANDROID;
-        } elseif (stristr($userAgent, 'linux')) {
-            $browser->os = self::OS_LINUX;
-        } else {
-            $browser->os = self::OS_UNKNOWN;
+        $browser->os = OS_UNKNOWN;
+        $defs = $this->definitions->os();
+        foreach ($defs as $d) {
+            if (preg_match("/{$d['pattern']}/i", $userAgent)) {
+                $browser->os = $d['os'];
+                $browser->osVersion = $d['version'];
+                break;
+            }
         }
+        return;
     }
 
     private function detectBrowser($userAgent, $browser) {
@@ -41,6 +44,7 @@ class BrowserDetector
     }
 
     private function detectPlatform($userAgent, $browser) {
+        $browser->platform = self::PLATFORM_UNKNOWN;
     }
 }
 

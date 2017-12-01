@@ -18,7 +18,7 @@ class DefinitionsTest extends Tester\TestCase
         $definitions = new BrowserDetector\Definitions;
         $os = $definitions->os();
         Assert::type('array', $os);
-        Assert::count(4, $os);
+        Assert::count(5, $os);
 
         $first = $os[0];
         $expectedFirst = ['os' => 'Windows', 'version' => '10', 'pattern' => 'Windows NT 10\\.0', 'ua' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/62.0.3202.94 Safari/537.36'];
