@@ -1,6 +1,7 @@
 <?php
 
 require_once(__DIR__ . '/BrowserDetector/Browser.php');
+require_once(__DIR__ . '/BrowserDetector/Definitions.php');
 
 use BrowserDetector\Browser;
 
@@ -41,4 +42,7 @@ class BrowserDetector
 
     private function detectPlatform($userAgent, $browser) {
     }
+}
+
+class BrowserDetectorException extends Exception {
 }
